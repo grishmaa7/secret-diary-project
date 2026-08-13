@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #hamro apps
     'rest_framework',
     'journal',
+  
 ]
 
 MIDDLEWARE = [
