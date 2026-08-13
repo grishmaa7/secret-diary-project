@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #hamro apps
     'rest_framework',
     'journal',
+    'accounts',
   
 ]
 
