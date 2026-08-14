@@ -40,3 +40,15 @@ class Entry(models.Model):
     def __str__(self):
         return f"{self.title} ({self.owner.username})"
 
+class Reflection(models.Model):
+    entry = models.OneToOneField(
+        Entry,
+        on_delete=models.CASCADE,
+        related_name='reflection'
+    )
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Reflection for {self.entry.title}"
