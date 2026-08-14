@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>New Category</title>
 
     <style>
@@ -70,6 +72,7 @@
 </head>
 
 <body>
+    {% include 'navbar.html' %}
 
     <div class="container">
 

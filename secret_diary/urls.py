@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from journal.views import home, entries_page, create_entry, entry_edit, entry_delete
+from journal.views import home, entries_page, create_entry, entry_edit, entry_delete, entry_reflection
 from categories.views import categories_page, create_category
 
 urlpatterns = [
@@ -16,6 +16,7 @@ urlpatterns = [
     path('entries/new/', create_entry, name='create_entry'),
     path('entries/<int:entry_id>/edit/', entry_edit, name='entry_edit'),
     path('entries/<int:entry_id>/delete/', entry_delete, name='entry_delete'),
+    path('entries/<int:entry_id>/reflection/', entry_reflection, name='entry_reflection'),
     path('categories/', categories_page, name='categories'),
     path('categories/new/', create_category, name='create_category'),
 

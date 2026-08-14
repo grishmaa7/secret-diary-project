@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>My Diary</title>
 
     <style>
@@ -66,6 +68,7 @@
 </head>
 
 <body>
+    {% include 'navbar.html' %}
 
     <div class="container">
 
@@ -94,8 +97,9 @@
                 Created: {{ entry.created_at }}
             </p>
             
-            <a class="button" href="/entries/{{ entry.id }}/edit/">✏️ Edit</a>
-            <a class="button" href="/entries/{{ entry.id }}/delete/">🗑️ Delete</a>
+        <a class="button" href="/entries/{{ entry.id }}/edit/">✏️ Edit</a>
+        <a class="button" href="/entries/{{ entry.id }}/reflection/">💭 Reflect</a>
+        <a class="button" href="/entries/{{ entry.id }}/delete/">🗑️ Delete</a>
             </div>
 
         {% empty %}
