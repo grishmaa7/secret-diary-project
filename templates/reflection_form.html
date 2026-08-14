@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reflection</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="page-narrow">
+
+        <div class="page-header">
+            <h1>💭 Reflection on "{{ entry.title }}"</h1>
+            <p>Looking back, what do you think now?</p>
+        </div>
+
+        <div class="form-card">
+            <form method="POST">
+                {% csrf_token %}
+
+                <label for="content">Your reflection</label>
+                <textarea id="content" name="content"
+                    placeholder="Looking back on this entry, what do you think now?">{% if reflection %}{{ reflection.content }}{% endif %}</textarea>
+
+                <div class="form-actions">
+                    <a class="button button-soft" href="/entries/">← Back</a>
+                    <button type="submit">Save Reflection</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+{% include 'footer.html' %}
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Us - Secret Diary</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="page-narrow">
+
+        <div class="page-header">
+            <h1>📬 Contact Us</h1>
+            <p>Questions, feedback, or just want to say hi? Reach out below.</p>
+        </div>
+
+        <div class="form-card">
+
+            {% if submitted %}
+            <p style="color: #2f8064; font-weight: 600;">Thanks for reaching out! We'll get back to you soon. 💌</p>
+            {% else %}
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="you@example.com" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+                <div class="form-actions">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% include 'footer.html' %}
+
+</body>
+
+</html>

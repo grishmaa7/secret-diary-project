@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Secret Diary</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="page-narrow">
+
+        <div class="hero-card">
+            <h1 style="font-size: 40px; margin-bottom: 14px;">🔒 Secret Diary</h1>
+            <p style="font-size: 16px;">
+                Write your thoughts, memories and reflections
+                in one safe, private place.
+            </p>
+
+            <div class="action-row" style="justify-content: center; margin-top: 26px;">
+                {% if user.is_authenticated %}
+                <a class="button" href="/entries/">📖 My Diary</a>
+                <a class="button button-soft" href="/entries/new/">➕ New Entry</a>
+                {% else %}
+                <a class="button" href="/login/">🔐 Login</a>
+                <a class="button button-soft" href="/register/">📝 Register</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+{% include 'footer.html' %}
+</body>
+
+</html>

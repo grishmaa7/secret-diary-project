@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login - Secret Diary</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="page-narrow">
+
+        <div class="form-card" style="max-width: 420px; margin: 40px auto;">
+
+            <h1 style="margin-bottom: 20px;">🔐 Welcome Back</h1>
+
+            {% if error %}
+            <p style="color: #d64545; font-weight: 600;">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <label>Username</label>
+                <input type="text" name="username" required>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+
+                <div class="form-actions">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+
+            <p style="margin-top: 20px; font-size: 14px;">
+                Don't have an account?
+                <a href="/register/" style="color: var(--pink); font-weight: 600;">Register</a>
+            </p>
+
+        </div>
+
+    </div>
+{% include 'footer.html' %}
+</body>
+
+</html>

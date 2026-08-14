@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>New Diary Entry</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="page-narrow">
+
+        <div class="page-header">
+            <h1>✍️ New Diary Entry</h1>
+            <p>What's on your mind today?</p>
+        </div>
+
+        <div class="form-card">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="Give your entry a title" required>
+
+                <label for="content">What's on your mind?</label>
+                <textarea id="content" name="content" placeholder="Write your thoughts here..." required></textarea>
+
+                <label for="mood">Mood</label>
+                <select id="mood" name="mood">
+                    <option value="happy">😊 Happy</option>
+                    <option value="sad">😢 Sad</option>
+                    <option value="neutral">😐 Neutral</option>
+                    <option value="anxious">😰 Anxious</option>
+                    <option value="excited">🤩 Excited</option>
+                </select>
+
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">
+                        {{ category.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <div class="form-actions">
+                    <a class="button button-soft" href="/entries/">← Back</a>
+                    <button type="submit">Save Entry</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+{% include 'footer.html' %}
+</body>
+
+</html>
