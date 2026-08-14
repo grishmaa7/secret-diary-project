@@ -92,7 +92,10 @@
             <p class="date">
                 Created: {{ entry.created_at }}
             </p>
-        </div>
+            
+            <a class="button" href="/entries/{{ entry.id }}/edit/">✏️ Edit</a>
+            <a class="button" href="/entries/{{ entry.id }}/delete/">🗑️ Delete</a>
+            </div>
 
         {% empty %}
 

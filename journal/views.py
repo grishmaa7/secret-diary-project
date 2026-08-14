@@ -7,7 +7,7 @@ from .models import Entry, Reflection
 from .serializers import EntrySerializer, ReflectionSerializer
 from django.shortcuts import render, redirect
 from categories.models import Category
-
+from django.shortcuts import get_object_or_404
 
 class EntryViewSet(viewsets.ModelViewSet):
     serializer_class = EntrySerializer
@@ -58,4 +58,38 @@ def create_entry(request):
         request,
         'entry_form.html',
         {'categories': categories}
+    )
+
+def entry_edit(request, entry_id):
+    entry = get_object_or_404(Entry, id=entry_id, owner=request.user)
+
+    if request.method == 'POST':
+        entry.title = request.POST['title']
+        entry.content = request.POST['content']
+        entry.mood = request.POST['mood']
+        entry.category_id = request.POST['category']
+        entry.save()
+
+        return redirect('entries')
+
+    categories = Category.objects.all()
+
+    return render(
+        request,
+        'entry_edit.html',
+        {'entry': entry, 'categories': categories}
+    )
+
+
+def entry_delete(request, entry_id):
+    entry = get_object_or_404(Entry, id=entry_id, owner=request.user)
+
+    if request.method == 'POST':
+        entry.delete()
+        return redirect('entries')
+
+    return render(
+        request,
+        'entry_confirm_delete.html',
+        {'entry': entry}
     )
