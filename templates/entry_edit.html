@@ -90,17 +90,18 @@
 
                 <label for="mood">Mood</label>
                 <select id="mood" name="mood">
-                <option value="happy" {% if entry.mood == 'happy' %}selected{% endif %}>Happy</option>
-                <option value="sad" {% if entry.mood == 'sad' %}selected{% endif %}>Sad</option>
-                <option value="neutral" {% if entry.mood == 'neutral' %}selected{% endif %}>Neutral</option>
-                <option value="anxious" {% if entry.mood == 'anxious' %}selected{% endif %}>Anxious</option>
-                <option value="excited" {% if entry.mood == 'excited' %}selected{% endif %}>Excited</option>
+                    <option value="happy" {% if entry.mood == 'happy' %}selected{% endif %}>Happy</option>
+                    <option value="sad" {% if entry.mood == 'sad' %}selected{% endif %}>Sad</option>
+                    <option value="neutral" {% if entry.mood == 'neutral' %}selected{% endif %}>Neutral</option>
+                    <option value="anxious" {% if entry.mood == 'anxious' %}selected{% endif %}>Anxious</option>
+                    <option value="excited" {% if entry.mood == 'excited' %}selected{% endif %}>Excited</option>
                 </select>
 
                 <label for="category">Category</label>
                 <select id="category" name="category">
                     {% for category in categories %}
                     <option value="{{ category.id }}" {% if entry.category_id == category.id %}selected{% endif %}>
+                        {{ category.name }}
                     </option>
                     {% endfor %}
                 </select>
