@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Entry</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f1e8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .back {
+            background: #777;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>✏️ Edit Entry</h1>
+
+        <div class="form-card">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="{{ entry.title }}" required>
+
+                <label for="content">What's on your mind?</label>
+                <textarea id="content" name="content" required>{{ entry.content }}</textarea>
+
+                <label for="mood">Mood</label>
+                <select id="mood" name="mood">
+                    <option value="happy" {% if entry.mood=='happy' %}selected{% endif %}>Happy</option>
+                    <option value="sad" {% if entry.mood=='sad' %}selected{% endif %}>Sad</option>
+                    <option value="neutral" {% if entry.mood=='neutral' %}selected{% endif %}>Neutral</option>
+                    <option value="anxious" {% if entry.mood=='anxious' %}selected{% endif %}>Anxious</option>
+                    <option value="excited" {% if entry.mood=='excited' %}selected{% endif %}>Excited</option>
+                </select>
+
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {% if entry.category_id==category.id %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <a class="button back" href="/entries/">← Cancel</a>
+
+                <button class="button" type="submit">
+                    Save Changes
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
