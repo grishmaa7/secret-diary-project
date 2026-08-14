@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from journal.views import home, entries_page, create_entry, entry_edit, entry_delete, entry_reflection
+
 from categories.views import categories_page, create_category
+from journal.views import home, entries_page, create_entry, entry_edit, entry_delete, entry_reflection, contact_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,6 +20,7 @@ urlpatterns = [
     path('entries/<int:entry_id>/reflection/', entry_reflection, name='entry_reflection'),
     path('categories/', categories_page, name='categories'),
     path('categories/new/', create_category, name='create_category'),
+    path('contact/', contact_page, name='contact'),
 
     # Authentication pages
     path('', include('accounts.urls')),

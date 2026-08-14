@@ -9,6 +9,7 @@ from django.shortcuts import render, redirect
 from categories.models import Category
 from django.shortcuts import get_object_or_404
 from .models import Reflection
+from django.contrib.auth.decorators import login_required
 
 class EntryViewSet(viewsets.ModelViewSet):
     serializer_class = EntrySerializer
@@ -32,7 +33,7 @@ class ReflectionViewSet(viewsets.ModelViewSet):
 def home(request):
     return render(request, 'home.html')
 
-
+@login_required
 def entries_page(request):
     entries = Entry.objects.filter(owner=request.user)
 
@@ -41,6 +42,8 @@ def entries_page(request):
         'entries.html',
         {'entries': entries}
     )
+
+@login_required
 def create_entry(request):
     if request.method == 'POST':
         Entry.objects.create(
@@ -61,6 +64,7 @@ def create_entry(request):
         {'categories': categories}
     )
 
+@login_required
 def entry_edit(request, entry_id):
     entry = get_object_or_404(Entry, id=entry_id, owner=request.user)
 
@@ -81,7 +85,7 @@ def entry_edit(request, entry_id):
         {'entry': entry, 'categories': categories}
     )
 
-
+@login_required
 def entry_delete(request, entry_id):
     entry = get_object_or_404(Entry, id=entry_id, owner=request.user)
 
@@ -95,6 +99,7 @@ def entry_delete(request, entry_id):
         {'entry': entry}
     )
 
+@login_required
 def entry_reflection(request, entry_id):
     entry = get_object_or_404(Entry, id=entry_id, owner=request.user)
     reflection = Reflection.objects.filter(entry=entry).first()
@@ -115,3 +120,8 @@ def entry_reflection(request, entry_id):
         'reflection_form.html',
         {'entry': entry, 'reflection': reflection}
     )
+def contact_page(request):
+    if request.method == 'POST':
+        return render(request, 'contact.html', {'submitted': True})
+
+    return render(request, 'contact.html')
