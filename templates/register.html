@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login - Secret Diary</title>
+    <title>Register - Secret Diary</title>
 
     <style>
         body {
@@ -64,7 +64,7 @@
 
         <div class="card">
 
-            <h1>🔐 Login</h1>
+            <h1>🔒 Create Your Diary Account</h1>
 
             {% if error %}
             <p class="error">{{ error }}</p>
@@ -79,12 +79,15 @@
                 <label>Password</label>
                 <input type="password" name="password" required>
 
-                <button type="submit">Login</button>
+                <label>Confirm Password</label>
+                <input type="password" name="password2" required>
+
+                <button type="submit">Create Account</button>
             </form>
 
             <p>
-                Don't have an account?
-                <a class="link" href="/register/">Register</a>
+                Already have an account?
+                <a class="link" href="/login/">Login</a>
             </p>
 
         </div>
