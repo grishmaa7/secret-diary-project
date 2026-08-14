@@ -1,17 +1,35 @@
 <nav class="navbar">
     <div class="navbar-inner">
+
         <a href="/" class="brand">🔒 Secret Diary</a>
 
         <div class="nav-links">
             {% if user.is_authenticated %}
+
             <a href="/entries/">📖 Diary</a>
+
             <a href="/entries/new/">➕ New Entry</a>
+
             <a href="/categories/">🏷️ Categories</a>
+
+            <div class="user-greeting">
+                <div class="user-avatar">
+                    {{ user.username|first|upper }}
+                </div>
+
+                <span>Hi, {{ user.username }}</span>
+            </div>
+
             <a href="/logout/">🚪 Logout</a>
+
             {% else %}
+
             <a href="/login/">🔐 Login</a>
+
             <a href="/register/">📝 Register</a>
+
             {% endif %}
         </div>
+
     </div>
 </nav>

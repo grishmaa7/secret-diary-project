@@ -96,6 +96,32 @@ p {
     box-shadow: 0 6px 14px rgba(200, 150, 220, 0.4);
 }
 
+.user-greeting {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 6px;
+    background: var(--lavender-light);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
 /* ---------- PAGE LAYOUT ---------- */
 
 .page {
@@ -284,7 +310,6 @@ textarea {
     gap: 10px;
 }
 
-/* ---------- FOOTER ---------- */
 /* ---------- FOOTER ---------- */
 
 .site-footer {
