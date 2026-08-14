@@ -2,90 +2,37 @@
 <html>
 
 <head>
+    <title>Categories</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Categories</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f1e8;
-            margin: 0;
-            padding: 40px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .top-bar {
-            margin: 20px 0;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 18px;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-right: 10px;
-        }
-
-        .category {
-            background: white;
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .category h2 {
-            margin: 0 0 8px 0;
-        }
-
-        .category p {
-            color: #666;
-            margin: 0;
-        }
-
-        .empty {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 
 <body>
+
     {% include 'navbar.html' %}
 
-    <div class="container">
+    <div class="page">
 
-        <h1>🏷️ Categories</h1>
-        <a class="button" href="/categories/new/">➕ New Category</a>
+        <div class="page-header">
+            <h1>🏷️ Categories</h1>
+            <p>Keep your entries organized and easy to find.</p>
+        </div>
 
-        <div class="top-bar">
-            <a class="button" href="/entries/">📖 My Diary</a>
-            <a class="button" href="/">← Home</a>
+        <div class="action-row">
+            <a class="button" href="/categories/new/">➕ New Category</a>
+            <a class="button button-soft" href="/entries/">📖 My Diary</a>
         </div>
 
         {% for category in categories %}
 
-        <div class="category">
+        <div class="card">
             <h2>{{ category.name }}</h2>
             <p>{{ category.description }}</p>
         </div>
 
         {% empty %}
 
-        <div class="empty">
+        <div class="empty-card">
             <h2>No categories yet 🏷️</h2>
             <p>Create your first category to organize your entries.</p>
         </div>

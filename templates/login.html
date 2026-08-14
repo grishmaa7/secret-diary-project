@@ -3,71 +3,22 @@
 
 <head>
     <title>Login - Secret Diary</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f1e8;
-            margin: 0;
-            padding: 40px;
-        }
-
-        .container {
-            max-width: 450px;
-            margin: 60px auto;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 12px;
-            margin: 8px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        button,
-        a {
-            display: inline-block;
-            padding: 11px 18px;
-            border: none;
-            border-radius: 6px;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .error {
-            color: #b00020;
-            margin-bottom: 15px;
-        }
-
-        .link {
-            background: none;
-            color: #333;
-            padding-left: 0;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
 
-    <div class="container">
+    {% include 'navbar.html' %}
 
-        <div class="card">
+    <div class="page-narrow">
 
-            <h1>🔐 Login</h1>
+        <div class="form-card" style="max-width: 420px; margin: 40px auto;">
+
+            <h1 style="margin-bottom: 20px;">🔐 Welcome Back</h1>
 
             {% if error %}
-            <p class="error">{{ error }}</p>
+            <p style="color: #d64545; font-weight: 600;">{{ error }}</p>
             {% endif %}
 
             <form method="POST">
@@ -79,12 +30,14 @@
                 <label>Password</label>
                 <input type="password" name="password" required>
 
-                <button type="submit">Login</button>
+                <div class="form-actions">
+                    <button type="submit">Login</button>
+                </div>
             </form>
 
-            <p>
+            <p style="margin-top: 20px; font-size: 14px;">
                 Don't have an account?
-                <a class="link" href="/register/">Register</a>
+                <a href="/register/" style="color: var(--pink); font-weight: 600;">Register</a>
             </p>
 
         </div>

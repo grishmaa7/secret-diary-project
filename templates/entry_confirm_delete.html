@@ -2,66 +2,30 @@
 <html>
 
 <head>
+    <title>Delete Entry</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Delete Entry</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f1e8;
-            margin: 0;
-            padding: 40px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        button {
-            padding: 12px 20px;
-            background: #b23b3b;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        a.button {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #777;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-    </style>
 </head>
 
 <body>
+
     {% include 'navbar.html' %}
 
-    <div class="container">
-        <div class="card">
-            <h2>Delete "{{ entry.title }}"?</h2>
+    <div class="page-narrow">
+
+        <div class="hero-card" style="margin-top: 40px;">
+            <h2 style="margin-bottom: 12px;">Delete "{{ entry.title }}"?</h2>
             <p>This can't be undone.</p>
 
-            <form method="POST">
+            <form method="POST" style="margin-top: 20px;">
                 {% csrf_token %}
-                <button type="submit">Yes, Delete</button>
-                <a class="button" href="/entries/">Cancel</a>
+                <div class="action-row" style="justify-content: center;">
+                    <button type="submit" class="button-danger">Yes, Delete</button>
+                    <a class="button button-soft" href="/entries/">Cancel</a>
+                </div>
             </form>
         </div>
+
     </div>
 
 </body>

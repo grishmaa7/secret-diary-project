@@ -5,54 +5,31 @@
     <title>Reflection</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-
-    <style>
-        .page-wrap {
-            max-width: 700px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        .form-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 180px;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 15px;
-            resize: vertical;
-            box-sizing: border-box;
-        }
-    </style>
 </head>
 
 <body>
 
     {% include 'navbar.html' %}
 
-    <div class="page-wrap">
+    <div class="page-narrow">
 
-        <h1>💭 Reflection on "{{ entry.title }}"</h1>
+        <div class="page-header">
+            <h1>💭 Reflection on "{{ entry.title }}"</h1>
+            <p>Looking back, what do you think now?</p>
+        </div>
 
         <div class="form-card">
             <form method="POST">
                 {% csrf_token %}
 
-                <textarea name="content"
+                <label for="content">Your reflection</label>
+                <textarea id="content" name="content"
                     placeholder="Looking back on this entry, what do you think now?">{% if reflection %}{{ reflection.content }}{% endif %}</textarea>
 
-                <br><br>
-
-                <a class="button" href="/entries/">← Back</a>
-                <button type="submit">Save Reflection</button>
+                <div class="form-actions">
+                    <a class="button button-soft" href="/entries/">← Back</a>
+                    <button type="submit">Save Reflection</button>
+                </div>
             </form>
         </div>
 

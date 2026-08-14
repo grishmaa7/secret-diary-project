@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --pink: #ff9ec4;
+    --pink-light: #ffd6e8;
+    --lavender: #c9a8f5;
+    --lavender-light: #e8d9fc;
+    --mint: #9fe8cf;
+    --mint-light: #d4f7ea;
+    --text-dark: #4a3f55;
+    --text-soft: #8a7f95;
+    --white: #ffffff;
+    --radius: 18px;
+    --shadow: 0 4px 20px rgba(150, 120, 180, 0.12);
+    --shadow-hover: 0 8px 28px rgba(150, 120, 180, 0.2);
+}
 
 * {
     box-sizing: border-box;
@@ -6,15 +21,34 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    background: linear-gradient(135deg, #ffe4ec 0%, #f3e8ff 50%, #e0f7ef 100%);
+    background: linear-gradient(135deg, #fff0f6 0%, #f4ecff 45%, #e8fbf3 100%);
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
-    color: #4a3f55;
+    color: var(--text-dark);
+    min-height: 100vh;
 }
 
+h1,
+h2,
+h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+p {
+    line-height: 1.6;
+    color: var(--text-soft);
+}
+
+/* ---------- NAVBAR ---------- */
+
 .navbar {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
     padding: 16px 40px;
     position: sticky;
     top: 0;
@@ -32,9 +66,10 @@ body {
 }
 
 .navbar .brand {
+    font-family: 'Poppins', sans-serif;
     font-size: 22px;
     font-weight: 700;
-    color: #4a3f55;
+    color: var(--text-dark);
     text-decoration: none;
 }
 
@@ -45,40 +80,206 @@ body {
 }
 
 .nav-links a {
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #ffb6c1, #d8b4fe);
+    padding: 9px 18px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
     color: white;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 8px rgba(200, 150, 220, 0.3);
 }
 
 .nav-links a:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 14px rgba(200, 150, 220, 0.4);
 }
+
+/* ---------- PAGE LAYOUT ---------- */
+
+.page {
+    max-width: 900px;
+    margin: auto;
+    padding: 50px 24px 80px 24px;
+}
+
+.page-narrow {
+    max-width: 640px;
+    margin: auto;
+    padding: 50px 24px 80px 24px;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-header p {
+    margin-top: 6px;
+    font-size: 15px;
+}
+
+.action-row {
+    margin: 20px 0 30px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ---------- CARDS ---------- */
+
+.card {
+    background: var(--white);
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.hero-card {
+    background: var(--white);
+    padding: 44px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.empty-card {
+    background: var(--white);
+    padding: 44px;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+/* ---------- TAGS / META ---------- */
+
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.tag-mood {
+    background: var(--mint-light);
+    color: #2f8064;
+}
+
+.tag-date {
+    background: var(--lavender-light);
+    color: #6b4fa0;
+    font-weight: 500;
+}
+
+/* ---------- BUTTONS ---------- */
 
 .button,
 a.button,
-button {
-    display: inline-block !important;
-    padding: 10px 18px !important;
-    background: linear-gradient(135deg, #b5ead7, #d8b4fe) !important;
+button,
+input[type="submit"] {
+    display: inline-block;
+    padding: 11px 20px;
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
     color: white !important;
-    text-decoration: none !important;
-    border: none !important;
-    border-radius: 20px !important;
-    margin-right: 8px !important;
-    font-family: 'Quicksand', sans-serif !important;
-    font-weight: 600 !important;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
-    transition: transform 0.15s ease;
+    box-shadow: 0 3px 10px rgba(200, 150, 220, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .button:hover,
 a.button:hover,
 button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(200, 150, 220, 0.45);
+}
+
+a.button-soft,
+.button-soft,
+button.button-soft {
+    background: var(--white) !important;
+    color: var(--text-dark) !important;
+    border: 2px solid var(--lavender-light) !important;
+    box-shadow: none;
+}
+
+.button-danger {
+    background: linear-gradient(135deg, #ff8a8a, #ffb199) !important;
+}
+
+/* ---------- FORMS ---------- */
+
+.form-card {
+    background: var(--white);
+    padding: 34px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--lavender-light);
+    border-radius: 12px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    background: #fbfaff;
+    transition: border-color 0.15s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--pink);
+}
+
+textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.form-actions {
+    margin-top: 26px;
+    display: flex;
+    gap: 10px;
 }

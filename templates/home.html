@@ -2,86 +2,32 @@
 <html>
 
 <head>
+    <title>Secret Diary</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Secret Diary</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f1e8;
-            margin: 0;
-            padding: 40px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 42px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .buttons {
-            margin-top: 25px;
-        }
-
-        a {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-right: 10px;
-        }
-
-        a:hover {
-            background: #555;
-        }
-    </style>
 </head>
 
 <body>
+
     {% include 'navbar.html' %}
 
-    <div class="container">
+    <div class="page-narrow">
 
-        <h1>🔒 Secret Diary</h1>
-
-        <div class="card">
-            <h2>Welcome to your private diary</h2>
-
-            <p>
+        <div class="hero-card">
+            <h1 style="font-size: 40px; margin-bottom: 14px;">🔒 Secret Diary</h1>
+            <p style="font-size: 16px;">
                 Write your thoughts, memories and reflections
-                in one secure place.
+                in one safe, private place.
             </p>
 
-            <div class="buttons">
-
+            <div class="action-row" style="justify-content: center; margin-top: 26px;">
                 {% if user.is_authenticated %}
-
-                <a href="/entries/">📖 My Diary</a>
-                <a href="/entries/new/">➕ New Entry</a>
-                <a href="/logout/">🚪 Logout</a>
-
+                <a class="button" href="/entries/">📖 My Diary</a>
+                <a class="button button-soft" href="/entries/new/">➕ New Entry</a>
                 {% else %}
-
-                <a href="/login/">🔐 Login</a>
-                <a href="/register/">📝 Register</a>
-
+                <a class="button" href="/login/">🔐 Login</a>
+                <a class="button button-soft" href="/register/">📝 Register</a>
                 {% endif %}
-
             </div>
         </div>
 
